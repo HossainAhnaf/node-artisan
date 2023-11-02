@@ -9,21 +9,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/HossainAhnaf/NodeArtisan.git"
+    "url": "git+https://github.com/HasanAshab/node-artisan.git"
   },
   "keywords": [
     "cli",
     "artisan"
   ],
-  "author": "hossainahnaf.18205@gmail.com",
+  "author": "haoronaldo.18@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/HossainAhnaf/NodeArtisan/issues"
+    "url": "https://github.com/HasanAshab/node-artisan/issues"
   },
-  "homepage": "https://github.com/HossainAhnaf/NodeArtisan#readme",
-  "files": [
-    "lib/**/*"
-  ],
+  "homepage": "https://github.com/HasanAshab/node-artisan#readme",
+  "files": ["lib/**/*"],
   "dependencies": {
     "chalk": "^4.1.2",
     "cli-progress": "^3.12.0",
