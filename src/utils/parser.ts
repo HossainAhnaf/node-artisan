@@ -1,6 +1,6 @@
 // @ts-nocheck
-class TooManyArguments {}
-class TooFewArguments {}
+import { consoleError } from "./console";
+
 
 //helper function for parseing single signature
 const parseSingleSignature = (i, signature, args, opts) => {
@@ -69,14 +69,14 @@ const addArgumentsValue = (obj, inputs) => {
     if (obj[key].isArrayType) {
       let i = 0;
       while (i < inputs.length && inputs[i] !== key) i++;
-      if (i === inputs.length) throw new TooFewArguments();
-
+      if (i === inputs.length) 
+        consoleError("Too Few Arguments.")
       obj[key].value = inputs.splice(i).slice(1);
     } else {
       if (inputs.length > 0) {
         obj[key].value = inputs.shift();
       } else if (!obj[key].isOptional) {
-        throw new TooFewArguments();
+        consoleError("Too Few Arguments.")
       }
     }
 
@@ -84,7 +84,8 @@ const addArgumentsValue = (obj, inputs) => {
 
   }
 
-  if (inputs.length > 0) throw new TooManyArguments();
+  if (inputs.length > 0)
+    consoleError("Too Many Arguments.")
 };
 
 const addOptionsValue = (obj, inputs) => {
@@ -96,9 +97,7 @@ const addOptionsValue = (obj, inputs) => {
         key
       ) {
         if (obj[key].needsValue) {
-          if (inputs[i][valIndex + 1] === undefined)
-            throw new TooFewArguments();
-          obj[key].value = inputs[i].slice(valIndex + 1);
+         obj[key].value = inputs[i].slice(valIndex + 1);
         } else {
           obj[key].value = true;
         }
@@ -107,7 +106,6 @@ const addOptionsValue = (obj, inputs) => {
         break;
       } else if (inputs[i][1] === obj[key].shortKey) {
         if (obj[key].needsValue) {
-          if (inputs[i].length < 3) throw new TooFewArguments();
           obj[key].value = inputs[i].slice(2);
         } else {
           obj[key].value = true;
@@ -118,10 +116,10 @@ const addOptionsValue = (obj, inputs) => {
       }
     }
     obj[key] = obj[key].value
-
   }
 
-  if (inputs.length > 0) throw new TooManyArguments();
+  if (inputs.length > 0) 
+    consoleError("Unknown Option Specified.")
 };
 
 export function parseArguments(signature, inputs) {

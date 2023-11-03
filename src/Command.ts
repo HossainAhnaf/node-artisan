@@ -255,7 +255,9 @@ export abstract class Command {
       this.metadata.base = this.signature
       this.metadata.pattern = "";
     }
-    this.metadata.base = this.signature.substring(0, firstSpaceIndex);
-    this.metadata.pattern = this.signature.substring(this.signature.indexOf(' ') + 1);
+    else {
+      this.metadata.base = this.signature.substring(0, firstSpaceIndex);
+      this.metadata.pattern = this.signature.substring(this.signature.indexOf(' ') + 1);
+    }
   }
 }

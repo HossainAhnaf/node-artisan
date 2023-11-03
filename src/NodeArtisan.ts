@@ -1,6 +1,7 @@
 import { Command } from "./Command";
 import { NodeArtisanConfig } from "./interfaces/NodeArtisanConfig";
 import { parseArguments, parseDescriptions } from "./utils/parser";
+import { consoleError } from "./utils/console";
 import { join, dirname } from "path";
 import { readdirSync, writeFileSync, mkdirSync } from "fs";
 import prompts, { Choice } from "prompts";
@@ -181,10 +182,8 @@ export class NodeArtisan {
     
     const similars = Object.keys(similarCommands);
     
-    if (similars.length === 0) {
-      console.log(bgRed(`No Command Found`))
-      process.exit(1)
-    }
+    if (similars.length === 0)
+      consoleError("No Command Found")
 
     const newBase = await this.$suggestSimilars(base, similars);
     if(newBase) {
