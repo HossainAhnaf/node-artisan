@@ -1,6 +1,6 @@
 import { Command } from "./Command";
 import { NodeArtisanConfig } from "./interfaces/NodeArtisanConfig";
-import { parseArguments, parseDescriptions } from "./utils/ArgumentParser";
+import { parseArguments, parseDescriptions } from "./utils/parser";
 import { join, dirname } from "path";
 import { readdirSync, writeFileSync, mkdirSync } from "fs";
 import prompts, { Choice } from "prompts";

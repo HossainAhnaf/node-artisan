@@ -1,4 +1,4 @@
-import { parseArguments, parseDescriptions } from '../src/utils/ArgumentParser';
+import { parseArguments, parseDescriptions } from '../src/utils/parser';
 
 class TooManyArguments {}
 class TooFewArguments {}

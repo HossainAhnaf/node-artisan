@@ -1,4 +1,4 @@
-import chalk from "chalk";
+import { green, black, red, white } from "chalk";
 import prompts, { Choice } from "prompts";
 import Table from "cli-table";
 import { SingleBar, Presets } from 'cli-progress';
@@ -168,14 +168,14 @@ export abstract class Command {
    * Log valueable information
   */
   protected info(message: string): void {
-    console.log(chalk.green(message));
+    console.log(green(message));
   }
   
   /**
    * Log comment
   */
   protected comment(message: string): void {
-    console.log(chalk.black(message));
+    console.log(black(message));
   }  
   
   /**
@@ -189,7 +189,7 @@ export abstract class Command {
    * Log error message
   */
   protected error(message: string): void {
-    console.log(chalk.red(message));
+    console.log(red(message));
   }
   
   /**
@@ -219,14 +219,14 @@ export abstract class Command {
    * Log warning message
   */
   protected warn(message: string): void {
-    console.log(chalk.bgYellow.black(` WARNING `) + ' ' + message);
+    console.log(black.bgYellow(` WARNING `) + ' ' + message);
   }
   
   /**
    * Log alert message
   */
   protected alert(message: string): void {
-    console.log(chalk.bgRed.white(` ALERT `) + ' ' + message);
+    console.log(white.bgRed(` ALERT `) + ' ' + message);
   }
   
   /**
